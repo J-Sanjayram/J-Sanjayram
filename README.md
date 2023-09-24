@@ -1,8 +1,8 @@
-- 👋 Hi, I’m @J-Sanjayram
-- 👀 I’m interested in ...
-- 🌱 I’m currently learning ...
-- 💞️ I’m looking to collaborate on ...
-- 📫 How to reach me ...
+- 👋 Hi, I’m @J-Sanjayram😎
+- 👀 I’m interested in programming 
+- 🖥️ I’m currently learning CSE
+- 💞️ I’m looking to collaborate on Tech
+- 📫 How to reach me j.sanjayramjs@gmail.com
 
 <!---
 J-Sanjayram/J-Sanjayram is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
