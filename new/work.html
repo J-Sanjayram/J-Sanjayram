@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+</head>
+<body>
+    <h1>User Profile</h1>
+    <div id="userProfile">
+        <p><strong>Name:</strong> <span id="userName"></span></p>
+        <p><strong>Email:</strong> <span id="userEmail"></span></p>
+        <!-- Add other user fields here -->
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCu190WbRUlR_KND7vODQdVy4FOgLLOFEA",
+  authDomain: "sample-6fce0.firebaseapp.com",
+  databaseURL: "https://sample-6fce0-default-rtdb.firebaseio.com",
+  projectId: "sample-6fce0",
+  storageBucket: "sample-6fce0.appspot.com",
+  messagingSenderId: "625856667950",
+  appId: "1:625856667950:web:55b184a368384ad69a1abf",
+  measurementId: "G-J7JRB45E1D"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Reference to Firestore
+        const db = firebase.firestore();
+
+        // Get the currently logged in user
+        const user = firebase.auth().currentUser;
+
+        // Check if user is logged in
+        if (user) {
+            // Reference to the user's document in Firestore
+            const userRef = db.collection("users").doc(user.uid);
+
+            // Retrieve user data from Firestore
+            userRef.get().then((doc) => {
+                if (doc.exists) {
+                    const userData = doc.data();
+                    // Display user data on the page
+                    document.getElementById("userName").textContent = userData.name;
+                    document.getElementById("userEmail").textContent = userData.email;
+                    // Add other user fields here
+                } else {
+                    console.log("No such document!");
+                }
+            }).catch((error) => {
+                console.log("Error getting document:", error);
+            });
+        } else {
+            console.log("User not logged in.");
+        }
+    </script>
+</body>
+</html>
